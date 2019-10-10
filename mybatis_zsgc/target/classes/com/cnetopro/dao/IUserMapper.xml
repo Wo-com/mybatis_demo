@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- mapper 约束-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace 写的是 dao权限类名-->
+<mapper namespace="com.cnetopro.dao.IUserDao">
+
+    <!--查询用户-->
+    <select id="findAll" resultType="com.cnetopro.domain.User">
+        select * from user
+    </select>
+
+    <!--保存用户-->
+    <select id="saveUser" parameterType="com.cnetopro.domain.User">
+        insert into user(id,name,age)value(#{id},#{name},#{age});
+    </select>
+
+    <!--更新操作-->
+    <update id="updateUser" parameterType="com.cnetopro.domain.User">
+        update user set id=#{id},name=#{name},age=#{age} where id=#{id}
+    </update>
+
+    <!-- 删除用户 -->
+<!--    最后面这个参数可以随便写-->
+    <delete id="delectUser" parameterType="java.lang.Integer">
+
+        delete from user where id=#{useId}
+    </delete>
+
+</mapper>
